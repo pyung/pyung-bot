@@ -5,6 +5,7 @@ import os
 
 class Config:
     """Base configuration."""
+    APP_NAME = 'MoodBot'
     SECRET_KEY = os.environ.get('NORMAN_SECRET', 'a9fb1b64-1f0f-11e7-95e2-7077816bf77d')
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
@@ -55,18 +56,8 @@ class ErrorConfig(Config):
 
 
 class MessageConfig(Config):
-    GET_STARTED_MESSAGE_WHAT = 'I help you manage your health and ' \
-                               'keep track of vital personal health information. ' \
-                               'I then update your hospital with this information to help treat you better.'
-    SUCCESSFUL_MESSAGE_TEMPLATE = {
-                                  'messaging': 'Great, your message has been delivered.'
-                                  }
-    UNSUCCESSFUL_MESSAGE_TEMPLATE = {
-                                  'messaging': 'Great, your message has been delivered.'
-                                  }
-    FIRST_TIME_TEMP_USER = ["You are currently using me as a free user."]
-
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."
+    GET_STARTED_MESSAGE = "Hello <username>".format(Config.APP_NAME)
 

@@ -1,0 +1,2 @@
+class MoodService():
+    pass
