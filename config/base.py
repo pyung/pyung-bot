@@ -12,6 +12,7 @@ class Config:
     __version__ = '1.0'
 
 
+
 class FBConfig(Config):
     """
     The GRAPH_API_URL format is <base_url><version><action><fields>
@@ -20,7 +21,11 @@ class FBConfig(Config):
     GRAPH_API_VERSION = 'v2.6'
     GRAPH_API_URL = 'https://graph.facebook.com/{0}/me/messages?access_token={1}'.format(
         GRAPH_API_VERSION, FACEBOOK_SECRET_KEY)
-    MESSENGER_VERIFICATION_TOKEN = "this_is_unit9"
+    WHITE_LISTED_DOMAINS = [
+        "https://wallpaperbrowse.com/media/images/pictures-14.jpg",
+        "http://norman-bot.herokuapp.com/static/landing/images/norman-android.png"
+    ]
+    MESSENGER_VERIFICATION_TOKEN = "this_is_unit09"
 
 
 class ProdConfig(Config):

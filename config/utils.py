@@ -16,7 +16,6 @@ from config.http_handler import base
 from config.errors import HttpMethodError
 from config.base import FBConfig
 
-
 def async_task(f):
     """ Takes a function and runs it in a thread """
     @wraps(f)

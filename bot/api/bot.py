@@ -6,6 +6,7 @@ from flask_restful import Resource
 from config.extensions import csrf_protect
 from config.utils import response
 from config.base import FBConfig
+from bot.messenger.utils import get_request_type
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
@@ -36,4 +37,7 @@ class WebHook(Resource):
             return response.response_error('Failed validation. Make sure the validation tokens match', args)
 
     def post(self):
-        pass
+        data = request.get_data()
+        request_type = get_request_type(data)
+        print(request_type)
+        return response.response_ok('Got it')
