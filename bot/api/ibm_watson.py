@@ -1,11 +1,11 @@
-from config.base import IBM_WATSON_CONFIG
+from config.base import IBMWatsonConFIG
 import json
 from watson_developer_cloud import ToneAnalyzerV3
 
 
 watson = ToneAnalyzerV3(
-    username=IBM_WATSON_CONFIG.username,
-    password=IBM_WATSON_CONFIG.password,
+    username=IBMWatsonConFIG.username,
+    password=IBMWatsonConFIG.password,
     version='2016-05-19')
 
 

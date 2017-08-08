@@ -64,7 +64,8 @@ class MessageConfig:
 
     NORMAL_RESPONSE_TEMPLATE = 'NORMAL RESPONSE TEMPLATE'
 
-class IBM_WATSON_CONFIG():
-    username = ''
-    password = ''
+
+class IBMWatsonConFIG():
+    username = '486420d7-22f2-416e-99c1-f9b3bfc2a0e3'
+    password = 'C8FwQVv8Gibg'
     version = ''
