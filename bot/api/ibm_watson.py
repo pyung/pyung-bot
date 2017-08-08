@@ -121,6 +121,10 @@ class Agent:
         """
 
         response = watson.tone(sentence)
-        tone_categories = response.get('document_tone', None).get('tone_categories', None)[0]
-        return tone_categories
+        emotion_tone = response.get('document_tone', None).get('tone_categories', None)[0]
+        tones = emotion_tone.get('tones')
+        print(tones)
+        for key, value in tones.items():
+            print(key, value)
+        return emotion_tone
 
