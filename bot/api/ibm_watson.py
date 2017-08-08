@@ -104,10 +104,10 @@ watson = ToneAnalyzerV3(
 
 class Agent:
     """
-    An instance of our api.ai agent
+    An instance of our Watson agent
     """
     @staticmethod
-    def parse(sentence, session_id):
+    def parse(sentence):
         """
 
         :param sentence: The sentence to parse (String)
@@ -123,10 +123,10 @@ class Agent:
         dict_list = []
         for tone_dict in tones:
             dict_list.append(tone_dict.get('score'))
-            print(dict_list)
             tone_score = max(dict_list)
-            print(tone_score)
             if tone_dict.get('score') == tone_score:
                 to_return = tone_dict.get('tone_id')
+                print('In loop to return is'+to_return)
+        print(to_return)
         return to_return
 

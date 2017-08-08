@@ -25,4 +25,5 @@ pymessenger
 
 pyyaml
 
+tinymongo
 watson_developer_cloud

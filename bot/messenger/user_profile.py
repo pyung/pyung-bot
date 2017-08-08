@@ -1,4 +1,3 @@
-from bot.models import UserModel
 from config.http_handler import base
 from config.errors import HttpMethodError
 from config.base import FBConfig
@@ -21,11 +20,3 @@ class Profile:
         else:
             raise HttpMethodError('Unable to complete request.')
 
-    @staticmethod
-    def get_by_fb_ID(facebook_id):
-        user = UserModel.objects.filter(facebook_id=facebook_id)
-        # print(patient.bio)
-        if user:
-            return True
-        else:
-            return None

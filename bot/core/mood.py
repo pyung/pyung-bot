@@ -1,5 +1,5 @@
 from bot.core.response import ResponseHandler
-from bot.messenger.user_profile import Profile
+from bot.models import UserModel
 
 
 class Moods(ResponseHandler):
@@ -8,7 +8,7 @@ class Moods(ResponseHandler):
         self.recipient_id = recipient_id
         self.current_mood = current_mood
         self.last_mood = last_mood
-        self.user = Profile.get_by_fb_ID(self.recipient_id)
+        self.user = UserModel.get_user_by_facebook_id(self.recipient_id)
 
     def get_response(self):
         if self.user_profile:
