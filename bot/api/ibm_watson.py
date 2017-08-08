@@ -122,7 +122,7 @@ class Agent:
 
         response = watson.tone(sentence)
         emotion_tone = response.get('document_tone', None).get('tone_categories', None)[0]
-        tones = emotion_tone.get('tones')[0]
+        tones = emotion_tone.get('tones')
         dict_list = []
         for tone_dict in tones:
             dict_list.append(tone_dict.get('score'))
