@@ -19,8 +19,7 @@ class Processor:
                 return ResponseHandler(self.recipient_id).bad_word_response()
 
         if ongoing_conversation(self.recipient_id):
-            print('On going')
-            service, last_mood = fill_slot(self.recipient_id)
+            last_mood = fill_slot(self.recipient_id)
             current_mood = parse_sentence(self.sentence)
             return self.launch_mood_service(current_mood, last_mood)
         else:
