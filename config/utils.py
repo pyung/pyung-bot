@@ -45,6 +45,15 @@ def update_white_listed_domains():
         return 'Error'
 
 
+def hash_data(data):
+    return hashlib.sha256(data.encode('utf-8')).hexdigest()
+
+
+def generate_conversation_session(data):
+    return hash_data(data)[:32]
+
+
+
 class Response:
 
     def __init__(self):

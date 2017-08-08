@@ -31,9 +31,7 @@ class WebHook(Resource):
 
     @staticmethod
     def get():
-        print(request)
         args = request.args
-        print(request.args)
         if args.get('hub.mode') == 'subscribe' and args.get('hub.verify_token') == FBConfig.MESSENGER_VERIFICATION_TOKEN:
             return make_response(args.get('hub.challenge').strip("\n\""))
         else:
@@ -46,7 +44,7 @@ class WebHook(Resource):
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
                 if referral_load:
-                    payloadhandler = PayloadConversationHandler(registered=True, recipient_id=recipient_id)
+                    payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
                     return payloadhandler.handle_conversation(postback_payload)
             return response.response_ok('success')
 
@@ -59,7 +57,6 @@ class WebHook(Resource):
                     message = decode_data(message.get('data'))
                 print("message: ", message)
                 Processor(message, recipient_id).process()
-                # self.response.handle_normal_response(suggested=processor.process())
             return response.response_ok('success')
         else:
             return response.response_ok('success')

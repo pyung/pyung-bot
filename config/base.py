@@ -12,7 +12,7 @@ class Config:
     __version__ = '1.0'
 
 
-class FBConfig(Config):
+class FBConfig:
     """
     The GRAPH_API_URL format is <base_url><version><action><fields>
     """
@@ -27,7 +27,7 @@ class FBConfig(Config):
     MESSENGER_VERIFICATION_TOKEN = "this_is_unit09"
 
 
-class ProdConfig(Config):
+class ProdConfig:
     """Production configuration."""
 
     ENV = 'prod'
@@ -35,20 +35,20 @@ class ProdConfig(Config):
     BASE_URL = 'htpps://norman-bot.herokuapp.com/'
 
 
-class DevConfig(Config):
+class DevConfig:
     ENV = 'dev'
     DEBUG = True
     BASE_URL = "htpps://localhost:5000/"
 
 
-class TestConfig(Config):
+class TestConfig:
     """Test configuration."""
 
     TESTING = True
     DEBUG = True
 
 
-class ErrorConfig(Config):
+class ErrorConfig:
     INVALID_VER_ID_ERROR = "Invalid/Expired Verification ID"
     INVALID_ROUTE_ERROR = "Looks like you do not have access to this page."
     INVALID_LOGIN_ERROR = "Invalid Email or Password"
@@ -56,9 +56,15 @@ class ErrorConfig(Config):
     UNABLE_TO_SET_PASSWORD_ERROR = "Unable to set the provided password"
 
 
-class MessageConfig(Config):
+class MessageConfig:
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."
     GET_STARTED_MESSAGE = "Hello <username>. My name is Moody. I'm the unit9 MoodBot.".format(Config.APP_NAME)
 
+    NORMAL_RESPONSE_TEMPLATE = 'NORMAL RESPONSE TEMPLATE'
+
+class IBM_WATSON_CONFIG():
+    username = ''
+    password = ''
+    version = ''

@@ -24,6 +24,14 @@ class ResponseHandler(Message, Profile):
         message_text = MessageConfig.BAD_WORD_TEMPLATE.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
+    def handle_normal_response(self, context):
+        message_text = MessageConfig.NORMAL_RESPONSE_TEMPLATE
+        return self.send_message("text", message_text=message_text)
+
+    def handle_small_talk(self, response):
+        pass
+
+
 
 
 
