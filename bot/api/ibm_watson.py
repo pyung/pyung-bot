@@ -27,6 +27,6 @@ class Agent:
 
         """
         print("querying api.ai, sentence = ", sentence)
-        print(watson.tone_chat(sentence))
-        return watson.tone_chat(sentence)
+        print(watson.tone(sentence))
+        return watson.tone(sentence)
 
