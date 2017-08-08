@@ -122,7 +122,14 @@ class Agent:
 
         response = watson.tone(sentence)
         emotion_tone = response.get('document_tone', None).get('tone_categories', None)[0]
-        tones = emotion_tone.get('tones')
-        print(tones[0])
+        tones = emotion_tone.get('tones')[0]
+        dict_list = []
+        for tone_dict in tones:
+            dict_list.append(tone_dict.get('score'))
+            for score in tone_dict:
+                tone_score = max(dict_list)
+            if tone_dict.get('score') == tone_score:
+                print(tone_dict.get('tone_id'))
+
         return emotion_tone
 
