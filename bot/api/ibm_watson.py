@@ -27,6 +27,6 @@ class Agent:
 
         """
         print("querying api.ai, sentence = ", sentence)
-        print(json.dumps(watson.tone_chat(sentence), indent=2))
+        print(watson.tone_chat(sentence))
         return watson.tone_chat(sentence)
 
