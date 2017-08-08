@@ -39,12 +39,16 @@ class Processor:
         """
         print('I got to launch mood.')
         if current_mood == 'joy':
+            print('I got to joy')
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
-        elif current_mood in 'disgust':
+        elif current_mood == 'disgust':
+            print('I got to disgust')
             return Disgust(current_mood, last_mood, self.recipient_id).get_response()
-        elif current_mood in 'anger':
+        elif current_mood == 'anger':
+            print('I got to anger')
             return Anger(current_mood, last_mood, self.recipient_id).get_response()
-        elif current_mood in 'fear':
+        elif current_mood == 'fear':
+            print('I got to fear')
             return Fear(current_mood, last_mood, self.recipient_id).get_response()
         return Sadness(current_mood, last_mood, self.recipient_id).get_response()
 
