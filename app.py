@@ -5,7 +5,6 @@ from flask import Flask
 from bot.api import bot
 from config.extensions import csrf_protect, handler
 from config.base import DevConfig
-from config.extensions import db
 from config import commands
 
 
@@ -28,7 +27,6 @@ def create_app(config_object=DevConfig):
 
 def register_extensions(app):
     """Register Flask extensions."""
-    db.init_app(app)
     csrf_protect.init_app(app)
 
 
