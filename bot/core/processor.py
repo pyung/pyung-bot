@@ -23,7 +23,6 @@ class Processor:
             current_mood = parse_sentence(self.sentence)
             return self.launch_mood_service(current_mood, last_mood)
         else:
-            print('New')
             current_mood = parse_sentence(self.sentence)
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
@@ -36,19 +35,14 @@ class Processor:
         :param last_mood:
         :return:
         """
-        print('I got to launch mood.')
         print(current_mood)
         if current_mood == 'joy':
-            print('I got to joy')
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'disgust':
-            print('I got to disgust')
             return Disgust(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'anger':
-            print('I got to anger')
             return Anger(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'fear':
-            print('I got to fear')
             return Fear(current_mood, last_mood, self.recipient_id).get_response()
         return Sadness(current_mood, last_mood, self.recipient_id).get_response()
 

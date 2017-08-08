@@ -24,8 +24,7 @@ class ResponseHandler(Message, Profile):
         return self.send_message("text", message_text=message_text)
 
     def handle_normal_response(self, mood, registered=False):
-        print('Handle Normal Response')
-        message_text = MessageConfig.get_message_by_mood(mood)
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
         print(message_text)
         return self.send_message("text", message_text=message_text)
 

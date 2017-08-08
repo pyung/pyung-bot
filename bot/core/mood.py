@@ -23,8 +23,7 @@ class Happiness(Moods):
     def get_response(self):
         if self.user_profile:
             print(self.user_profile)
-            return self.handle_normal_response(self.current_mood, registered=True)
-        print('No user profile')
+            return self.handle_happiness_response(self.current_mood, registered=True)
         return self.handle_happiness_response(self.current_mood, registered=False)
 
 
