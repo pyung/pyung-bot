@@ -82,7 +82,7 @@ def fill_slot(recipient_id):
 
 def parse_sentence(sentence, recipient_id):
     session_id = generate_conversation_session(recipient_id)[:36]
-    watson_response = Agent.parse(sentence, session_id=session_id)
+    watson_response = Agent.parse(sentence)
     return watson_response
 
 
