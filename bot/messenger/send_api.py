@@ -195,10 +195,7 @@ class PostBackMessages(Template):
     def handle_get_started(self):
         message_text = MessageConfig.GET_STARTED_MESSAGE
         message_text = message_text.replace('<username>', self.user_details['first_name'])
-        quick_replies = [
-            {"content_type": "text", "title": "What do you do?", "payload": "NORMAN_GET_STARTED_WHAT"},
-        ]
-        return self.send_message("text", message_text=message_text, quick_replies=quick_replies)
+        return self.send_message("text", message_text=message_text)
 
 
 

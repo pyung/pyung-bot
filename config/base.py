@@ -60,5 +60,5 @@ class MessageConfig(Config):
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."
-    GET_STARTED_MESSAGE = "Hello <username>".format(Config.APP_NAME)
+    GET_STARTED_MESSAGE = "Hello <username>. My name is Moody. I'm the unit9 MoodBot.".format(Config.APP_NAME)
 

@@ -3,10 +3,13 @@ from flask import make_response
 from flask import request
 from flask_restful import Resource
 
+from bot.core.processor import Processor
+from bot.core.response import ResponseHandler
+from bot.messenger.payload_conversation import PayloadConversationHandler
 from config.extensions import csrf_protect
-from config.utils import response
+from config.utils import response, decode_data
 from config.base import FBConfig
-from bot.messenger.utils import get_request_type
+from bot.messenger.utils import get_request_type, postback_events, messaging_events
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
@@ -37,9 +40,26 @@ class WebHook(Resource):
             return response.response_error('Failed validation. Make sure the validation tokens match', args)
 
     def post(self):
-        print('I got to post')
         data = request.get_data()
-        print(data)
         request_type = get_request_type(data)
-        print(request_type)
-        return response.response_ok('Got it')
+
+        if request_type == 'postback':
+            for recipient_id, postback_payload, referral_load in postback_events(data):
+                if referral_load:
+                    payloadhandler = PayloadConversationHandler(registered=True, recipient_id=recipient_id)
+                    return payloadhandler.handle_conversation(postback_payload)
+            return response.response_ok('success')
+
+        elif request_type == "message":
+            for recipient_id, message in messaging_events(data):
+                if not message:
+                    return response.response_ok('Success')
+                self.response = ResponseHandler(recipient_id)
+                if message['type'] == 'text':
+                    message = decode_data(message.get('data'))
+                print("message: ", message)
+                Processor(message, recipient_id).process()
+                # self.response.handle_normal_response(suggested=processor.process())
+            return response.response_ok('success')
+        else:
+            return response.response_ok('success')
