@@ -58,8 +58,8 @@ def ongoing_conversation(recipient_id):
     return False
 
 
-def create_conversational_log(filename, current_mood, service):
-    data = {'current_mood': current_mood, 'service': service}
+def create_conversational_log(filename, current_mood):
+    data = {'current_mood': current_mood}
     filename += '.yaml'
     with io.open(filename, 'w', encoding='utf8') as outfile:
         yaml.dump(data, outfile, default_flow_style=False, explicit_start=True)
@@ -80,8 +80,7 @@ def fill_slot(recipient_id):
     return service, current_mood
 
 
-def parse_sentence(sentence, recipient_id):
-    session_id = generate_conversation_session(recipient_id)[:36]
+def parse_sentence(sentence):
     watson_response = Agent.parse(sentence)
     return watson_response
 

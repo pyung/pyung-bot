@@ -1,4 +1,4 @@
-from bot.messenger.utils import bad_word_filter, ongoing_conversation, fill_slot, parse_sentence
+from bot.messenger.utils import bad_word_filter, ongoing_conversation, fill_slot, parse_sentence,create_conversational_log
 from bot.core.response import ResponseHandler
 from bot.core.mood import Happiness, Sadness, Anger, Disgust, Fear
 
@@ -21,11 +21,12 @@ class Processor:
         if ongoing_conversation(self.recipient_id):
             print('On going')
             service, last_mood = fill_slot(self.recipient_id)
-            current_mood = parse_sentence(self.sentence, self.recipient_id)
+            current_mood = parse_sentence(self.sentence)
             return self.launch_mood_service(current_mood, last_mood)
         else:
             print('New')
-            current_mood = parse_sentence(self.sentence, self.recipient_id)
+            current_mood = parse_sentence(self.sentence)
+            create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
     def launch_mood_service(self, current_mood, last_mood=None):
