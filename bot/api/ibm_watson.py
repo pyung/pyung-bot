@@ -117,7 +117,6 @@ class Agent:
         """
 
         response = watson.tone(sentence)
-        return response
         emotion_tone = response.get('document_tone', None).get('tone_categories', None)[0]
         tones = emotion_tone.get('tones')
         to_return = ''
