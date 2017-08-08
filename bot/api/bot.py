@@ -32,15 +32,18 @@ class WebHook(Resource):
     @staticmethod
     def get():
         args = request.args
-        if args.get('hub.mode') == 'subscribe' and args.get('hub.verify_token') == FBConfig.MESSENGER_VERIFICATION_TOKEN:
-            return make_response(args.get('hub.challenge').strip("\n\""))
+        hub_mode = args.get('hub.mode')
+        verification_token = args.get('hub.verify_token')
+        hub_challenge = args.get('hub.challenge').strip("\n\"")
+        if hub_mode == 'subscribe' and verification_token == FBConfig.MESSENGER_VERIFICATION_TOKEN:
+            print('IO got here.')
+            return response.response_ok(hub_challenge)
         else:
             return response.response_error('Failed validation. Make sure the validation tokens match', args)
 
     def post(self):
         data = request.get_data()
         request_type = get_request_type(data)
-
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
                 if referral_load:
