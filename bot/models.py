@@ -17,6 +17,7 @@ class UserModel:
     @staticmethod
     def get_user_by_facebook_id(facebook_id):
         user = db.find_one({facebook_id: facebook_id})
+        print(user)
         if user:
             return True
         return False

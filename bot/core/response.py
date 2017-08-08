@@ -23,26 +23,26 @@ class ResponseHandler(Message, Profile):
         message_text = MessageConfig.BAD_WORD_TEMPLATE.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
-    def handle_normal_response(self, mood, registered=False):
+    def handle_normal_response(self):
         message_text = MessageConfig.BAD_WORD_TEMPLATE
         print(message_text)
         return self.send_message("text", message_text=message_text)
 
-    def handle_happiness_response(self, mood, registered=False):
-        message_text = MessageConfig.get_message_by_mood(mood)
+    def handle_happiness_response(self):
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
         print(message_text)
         return self.send_message("text", message_text=message_text)
 
-    def handle_sadness_response(self, mood, registered=False):
-        message_text = MessageConfig.get_message_by_mood(mood)
+    def handle_sadness_response(self):
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
         return self.send_message("text", message_text=message_text)
 
-    def handle_anger_response(self, mood, registered=False):
-        message_text = MessageConfig.get_message_by_mood(mood)
+    def handle_anger_response(self):
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
         return self.send_message("text", message_text=message_text)
 
-    def handle_disgust_response(self, mood, registered=False):
-        message_text = MessageConfig.get_message_by_mood(mood)
+    def handle_disgust_response(self):
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
         return self.send_message("text", message_text=message_text)
 
 

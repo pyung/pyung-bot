@@ -58,7 +58,6 @@ class WebHook(Resource):
                 self.response = ResponseHandler(recipient_id)
                 if message['type'] == 'text':
                     message = decode_data(message.get('data'))
-                print("message: ", message)
                 Processor(message, recipient_id).process()
             return response.response_ok('success')
         else:

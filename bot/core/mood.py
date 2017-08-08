@@ -12,8 +12,8 @@ class Moods(ResponseHandler):
 
     def get_response(self):
         if self.user_profile:
-            return self.handle_normal_response(self.current_mood, registered=True)
-        return self.handle_normal_response(self.current_mood, registered=False)
+            return self.handle_normal_response(self.current_mood)
+        return self.handle_normal_response(self.current_mood)
 
 
 class Happiness(Moods):
@@ -23,8 +23,8 @@ class Happiness(Moods):
     def get_response(self):
         if self.user_profile:
             print(self.user_profile)
-            return self.handle_happiness_response(self.current_mood, registered=True)
-        return self.handle_happiness_response(self.current_mood, registered=False)
+            return self.handle_happiness_response(self.current_mood)
+        return self.handle_happiness_response(self.current_mood)
 
 
 class Sadness(Moods):
@@ -33,8 +33,8 @@ class Sadness(Moods):
 
     def get_response(self):
         if self.user_profile:
-            return self.handle_normal_response(self.current_mood, registered=True)
-        return self.handle_sadness_response(self.current_mood, registered=False)
+            return self.handle_normal_response(self.current_mood)
+        return self.handle_sadness_response(self.current_mood)
 
 
 class Anger(Moods):
@@ -44,7 +44,7 @@ class Anger(Moods):
     def get_response(self):
         if self.user_profile:
             return self.handle_normal_response(self.current_mood)
-        return self.handle_anger_response(self.current_mood, registered=False)
+        return self.handle_anger_response(self.current_mood)
 
 
 class Disgust(Moods):
@@ -54,7 +54,7 @@ class Disgust(Moods):
     def get_response(self):
         if self.user_profile:
             return self.handle_normal_response(self.current_mood)
-        return self.handle_disgust_response(self.current_mood, registered=False)
+        return self.handle_disgust_response(self.current_mood)
 
 
 class Fear(Moods):
@@ -64,7 +64,7 @@ class Fear(Moods):
     def get_response(self):
         if self.user_profile:
             return self.handle_normal_response(self.current_mood)
-        return self.handle_disgust_response(self.current_mood, registered=False)
+        return self.handle_disgust_response(self.current_mood)
 
 
 
