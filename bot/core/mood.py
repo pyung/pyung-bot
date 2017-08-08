@@ -11,7 +11,7 @@ class Moods(ResponseHandler):
         self.user = UserModel.get_user_by_facebook_id(self.recipient_id)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_normal_response()
         return self.handle_normal_response()
 
@@ -21,7 +21,7 @@ class Happiness(Moods):
         super(Happiness, self).__init__(recipient_id, current_mood,  last_mood)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_happiness_response()
         return self.handle_happiness_response()
 
@@ -31,7 +31,7 @@ class Sadness(Moods):
         super(Sadness, self).__init__(recipient_id, current_mood,  last_mood)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_normal_response()
         return self.handle_sadness_response()
 
@@ -41,7 +41,7 @@ class Anger(Moods):
         super(Anger, self).__init__(recipient_id, current_mood,  last_mood)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_normal_response()
         return self.handle_anger_response()
 
@@ -51,7 +51,7 @@ class Disgust(Moods):
         super(Disgust, self).__init__(recipient_id, current_mood, last_mood)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_normal_response()
         return self.handle_disgust_response()
 
@@ -61,7 +61,7 @@ class Fear(Moods):
         super(Fear, self).__init__(recipient_id, current_mood, last_mood)
 
     def get_response(self):
-        if self.user_profile:
+        if self.user:
             return self.handle_normal_response()
         return self.handle_disgust_response()
 
