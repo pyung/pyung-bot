@@ -13,4 +13,3 @@ csrf_protect = CSRFProtect()
 api = Api()
 handler = RotatingFileHandler('log.log', maxBytes=10000, backupCount=1)
 db = connection.MoodBot.user_collection
-session = MongoEngineSessionInterface(db)
