@@ -39,6 +39,7 @@ class WebHook(Resource):
     def post(self):
         print('I got to post')
         data = request.get_data()
+        print(data)
         request_type = get_request_type(data)
         print(request_type)
         return response.response_ok('Got it')
