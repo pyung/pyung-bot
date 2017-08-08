@@ -66,6 +66,6 @@ class MessageConfig:
 
 
 class IBMWatsonConFIG():
-    username = '486420d7-22f2-416e-99c1-f9b3bfc2a0e3'
-    password = 'C8FwQVv8Gibg'
+    username = '374dbea2-89f3-472a-8d7f-dd3da77d121f'
+    password = 'kGkekLd1RpCr'
     version = '2016-05-19'
