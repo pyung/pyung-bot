@@ -69,3 +69,4 @@ class IBMWatsonConFIG():
     username = '374dbea2-89f3-472a-8d7f-dd3da77d121f'
     password = 'kGkekLd1RpCr'
     version = '2016-05-19'
+    MOOD_LEVELS = ['happy', 'joy', 'sad', 'angry','indifferent','fear']
