@@ -120,10 +120,10 @@ class Agent:
 
         """
 
-        response = json.loads(watson.tone(sentence))
+        response = watson.tone(sentence)
         print(type(response))
-        tone_categories = response[0].get('tone_categories')[0]
+        tone_categories = response.get('document_tone', None)
         print(tone_categories)
-        return response
+        return tone_categories
 
 
