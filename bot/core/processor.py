@@ -38,6 +38,7 @@ class Processor:
         :return:
         """
         print('I got to launch mood.')
+        print(current_mood)
         if current_mood == 'joy':
             print('I got to joy')
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
