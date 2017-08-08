@@ -37,6 +37,7 @@ class WebHook(Resource):
             return response.response_error('Failed validation. Make sure the validation tokens match', args)
 
     def post(self):
+        print('I got to post')
         data = request.get_data()
         request_type = get_request_type(data)
         print(request_type)

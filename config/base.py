@@ -12,7 +12,6 @@ class Config:
     __version__ = '1.0'
 
 
-
 class FBConfig(Config):
     """
     The GRAPH_API_URL format is <base_url><version><action><fields>
