@@ -21,8 +21,11 @@ class Happiness(Moods):
         super(Happiness, self).__init__(recipient_id, current_mood,  last_mood)
 
     def get_response(self):
+        print('I got to response')
         if self.user_profile:
+            print(self.user_profile)
             return self.handle_normal_response(self.current_mood, registered=True)
+        print('No user profile')
         return self.handle_happiness_response(self.current_mood, registered=False)
 
 

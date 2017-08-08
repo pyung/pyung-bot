@@ -29,6 +29,7 @@ class ResponseHandler(Message, Profile):
 
     def handle_happiness_response(self, mood, registered=False):
         message_text = MessageConfig.get_message_by_mood(mood)
+        print(message_text)
         return self.send_message("text", message_text=message_text)
 
     def handle_sadness_response(self, mood, registered=False):
