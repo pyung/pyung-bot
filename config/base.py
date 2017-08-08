@@ -57,6 +57,7 @@ class MessageConfig:
     @classmethod
     def get_message_by_mood(cls, current_mood):
         message_dict = "You got to message mood."
+        print(message_dict)
         return message_dict
         # return [message for mood, message in message_dict.items() if current_mood == mood]
 

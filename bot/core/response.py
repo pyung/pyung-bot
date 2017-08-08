@@ -24,6 +24,7 @@ class ResponseHandler(Message, Profile):
         return self.send_message("text", message_text=message_text)
 
     def handle_normal_response(self, mood, registered=False):
+        print('Handle Norman Response')
         message_text = MessageConfig.get_message_by_mood(mood)
         return self.send_message("text", message_text=message_text)
 
