@@ -48,25 +48,19 @@ class TestConfig:
     DEBUG = True
 
 
-class ErrorConfig:
-    INVALID_VER_ID_ERROR = "Invalid/Expired Verification ID"
-    INVALID_ROUTE_ERROR = "Looks like you do not have access to this page."
-    INVALID_LOGIN_ERROR = "Invalid Email or Password"
-    INVALID_ID_ERROR = "The provided ID is invalid"
-    UNABLE_TO_SET_PASSWORD_ERROR = "Unable to set the provided password"
-
-
 class MessageConfig:
+
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."
-    GET_STARTED_MESSAGE = "Hello <username>. My name is Moody. I'm the unit9 MoodBot.".format(Config.APP_NAME)
 
-    NORMAL_RESPONSE_TEMPLATE = 'NORMAL RESPONSE TEMPLATE'
+    @classmethod
+    def get_message_by_mood(cls, current_mood):
+        message_dict = {}
+        return [message for mood, message in message_dict.items() if current_mood == mood]
 
 
 class IBMWatsonConFIG():
     username = '374dbea2-89f3-472a-8d7f-dd3da77d121f'
     password = 'kGkekLd1RpCr'
     version = '2016-05-19'
-    MOOD_LEVELS = ['happy', 'joy', 'sad', 'angry','indifferent','fear']

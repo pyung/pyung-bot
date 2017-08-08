@@ -1,6 +1,6 @@
 from bot.messenger.utils import bad_word_filter, ongoing_conversation, fill_slot, parse_sentence
 from bot.core.response import ResponseHandler
-from bot.core.services import MoodService
+from bot.core.mood import Happiness, Sadness, Anger, Disgust, Fear
 
 
 class Processor:
@@ -20,19 +20,28 @@ class Processor:
 
         if ongoing_conversation(self.recipient_id):
             service, last_mood = fill_slot(self.recipient_id)
-            return self.launch_service(service, last_mood)
+            current_mood = parse_sentence(self.sentence, self.recipient_id)
+            return self.launch_mood_service(current_mood, last_mood)
         else:
-            result = parse_sentence(self.sentence, self.recipient_id)
-            return ResponseHandler(self.recipient_id).handle_normal_response(context=result)
+            current_mood = parse_sentence(self.sentence, self.recipient_id)
+            return self.launch_mood_service(current_mood, last_mood=None)
 
-    def launch_service(self, service, last_mood):
+    def launch_mood_service(self, current_mood, last_mood=None):
         """
         There's a service launcher so i can extend to support other things
+        :param current_mood:
         :param service:
         :param last_mood:
         :return:
         """
-        if service == 'mood':
-            return MoodService(last_mood).get_response()
+        if current_mood == 'joy':
+            return Happiness(current_mood, last_mood, self.recipient_id).get_response()
+        elif current_mood in 'disgust':
+            return Disgust(current_mood, last_mood, self.recipient_id).get_response()
+        elif current_mood in 'anger':
+            return Anger(current_mood, last_mood, self.recipient_id).get_response()
+        elif current_mood in 'fear':
+            return Fear(current_mood, last_mood, self.recipient_id).get_response()
+        return Sadness(current_mood, last_mood, self.recipient_id).get_response()
 
 

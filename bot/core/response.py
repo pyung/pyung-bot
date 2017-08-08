@@ -5,7 +5,6 @@ from config.base import MessageConfig
 
 class ResponseHandler(Message, Profile):
     def __init__(self, recipient_id, **kwargs):
-        print(recipient_id)
         super(ResponseHandler, self).__init__(recipient_id, **kwargs)
         self.user_details = self.user_profile.get_user_details(recipient_id)
 
@@ -24,12 +23,22 @@ class ResponseHandler(Message, Profile):
         message_text = MessageConfig.BAD_WORD_TEMPLATE.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
-    def handle_normal_response(self, context):
-        message_text = MessageConfig.NORMAL_RESPONSE_TEMPLATE
+    def handle_normal_response(self, mood, context=None):
+        message_text = MessageConfig.get_message_by_mood(mood).replace("<context>", context)
         return self.send_message("text", message_text=message_text)
 
-    def handle_small_talk(self, response):
+    def handle_happiness_response(self, response, registered=False):
         pass
+
+    def handle_sadness_response(self, response,registered=False):
+        pass
+
+    def handle_anger_response(self, response, registered=False):
+        pass
+
+    def handle_disgust_response(self, response, registered=False):
+        pass
+
 
 
 

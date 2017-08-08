@@ -111,12 +111,8 @@ class Agent:
         """
 
         :param sentence: The sentence to parse (String)
-        :param session_id: A unique identifier for each user
-        :return: (serviceName, intentMatched, actionIncomplete, suggestedResponse)
-                 service_name - this corresponds to the action specified under the intent matched
-                 intent - this corresponds to the intent name on api.ai,
-                 action_incomplete - (boolean) returns true if required slots are missing,
-                 suggested_response - response filled on api.ai
+        :return: (tone_id)
+                 tone_id - Watson Tone ID
 
         """
 
@@ -130,6 +126,5 @@ class Agent:
                 tone_score = max(dict_list)
             if tone_dict.get('score') == tone_score:
                 print(tone_dict.get('tone_id'))
-
-        return emotion_tone
+                return tone_dict.get('tone_id')
 
