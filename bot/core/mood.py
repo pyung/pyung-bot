@@ -4,7 +4,7 @@ from bot.messenger.user_profile import Profile
 
 class Moods(ResponseHandler):
     def __init__(self, recipient_id, current_mood, last_mood=None):
-        super().__init__(recipient_id)
+        super(ResponseHandler, self).__init__(recipient_id)
         self.recipient_id = recipient_id
         self.current_mood = current_mood
         self.last_mood = last_mood
