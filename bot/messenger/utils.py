@@ -69,8 +69,9 @@ def read_conversational_log(filename):
     filename += '.yaml'
     with io.open(filename, 'r') as stream:
         data_loaded = yaml.load(stream)
-        parameters = data_loaded['parameters']
-        return parameters
+        print('Hi')
+        print(data_loaded)
+        return data_loaded
 
 
 def fill_slot(recipient_id):
