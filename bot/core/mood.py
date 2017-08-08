@@ -38,7 +38,7 @@ class Sadness(Moods):
 
 class Anger(Moods):
     def __init__(self, current_mood,  recipient_id, last_mood=None):
-        super(Anger).__init__(recipient_id, current_mood,  last_mood)
+        super(Anger, self).__init__(recipient_id, current_mood,  last_mood)
 
     def get_response(self):
         if self.user_profile:
@@ -48,7 +48,7 @@ class Anger(Moods):
 
 class Disgust(Moods):
     def __init__(self, current_mood, recipient_id, last_mood=None):
-        super(Disgust).__init__(recipient_id, current_mood, last_mood)
+        super(Disgust, self).__init__(recipient_id, current_mood, last_mood)
 
     def get_response(self):
         if self.user_profile:
@@ -58,8 +58,8 @@ class Disgust(Moods):
 
 class Fear(Moods):
     def __init__(self, current_mood, recipient_id, last_mood=None):
-        super(Fear).__init__(recipient_id, current_mood, last_mood)
-        
+        super(Fear, self).__init__(recipient_id, current_mood, last_mood)
+
     def get_response(self):
         if self.user_profile:
             return self.handle_normal_response(self.current_mood)
