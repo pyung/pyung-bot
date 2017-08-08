@@ -6,7 +6,7 @@ from watson_developer_cloud import ToneAnalyzerV3
 watson = ToneAnalyzerV3(
     username=IBMWatsonConFIG.username,
     password=IBMWatsonConFIG.password,
-    version=IBMWatsonConFIG)
+    version=IBMWatsonConFIG.version)
 
 
 class Agent:
