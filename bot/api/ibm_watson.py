@@ -1,8 +1,4 @@
-import json
-import os
-from os.path import join, dirname
 from config.base import IBM_WATSON_CONFIG
-
 import json
 from watson_developer_cloud import ToneAnalyzerV3
 
