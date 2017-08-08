@@ -126,7 +126,5 @@ class Agent:
             tone_score = max(dict_list)
             if tone_dict.get('score') == tone_score:
                 to_return = tone_dict.get('tone_id')
-                print('In loop to return is'+to_return)
-        print(to_return)
         return to_return
 

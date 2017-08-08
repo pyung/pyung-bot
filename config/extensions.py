@@ -4,7 +4,6 @@ from logging.handlers import RotatingFileHandler
 
 from flask_restful import Api
 from flask_wtf.csrf import CSRFProtect
-from flask_mongoengine import  MongoEngineSessionInterface
 from tinymongo import TinyMongoClient
 
 connection = TinyMongoClient()
