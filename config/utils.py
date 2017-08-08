@@ -53,7 +53,6 @@ def generate_conversation_session(data):
     return hash_data(data)[:32]
 
 
-
 class Response:
 
     def __init__(self):
