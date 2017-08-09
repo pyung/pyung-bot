@@ -43,7 +43,6 @@ class WebHook(Resource):
     def post(self):
         data = request.get_data()
         request_type = get_request_type(data)
-        print(request_type)
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
                 print(postback_payload)
@@ -58,10 +57,9 @@ class WebHook(Resource):
             for recipient_id, message in messaging_events(data):
                 if not message:
                     return response.response_ok('Success')
-                self.response = ResponseHandler(recipient_id)
                 if message['type'] == 'text':
                     message = decode_data(message.get('data'))
-                Processor(message, recipient_id).process()
+                    Processor(message, recipient_id).process()
             return response.response_ok('success')
         else:
             return response.response_ok('success')

@@ -20,10 +20,13 @@ class Processor:
 
         if ongoing_conversation(self.recipient_id):
             last_mood = fill_slot(self.recipient_id)
+            print('The last mood is', last_mood)
             current_mood = parse_sentence(self.sentence)
+            print('The current mood is ', current_mood)
             return self.launch_mood_service(current_mood, last_mood)
         else:
             current_mood = parse_sentence(self.sentence)
+            print('The current mood is', current_mood)
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
@@ -35,6 +38,7 @@ class Processor:
         :param last_mood:
         :return:
         """
+        print('Current Mood in Launch Mood is', current_mood)
         if current_mood == 'joy':
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'disgust':

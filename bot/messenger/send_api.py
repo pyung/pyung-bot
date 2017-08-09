@@ -3,7 +3,7 @@ from flask import json
 
 from config.errors import HttpMethodError
 from config.http_handler import base
-from bot.messenger.user_profile import Profile as BotProfile
+from bot.messenger.user_profile import Profile
 from config.base import FBConfig, MessageConfig
 from config.utils import response
 
@@ -14,6 +14,7 @@ class Message(object):
     def __init__(self, recipient_id, **kwargs):
         self.recipient_id = recipient_id
         self.notification_type = None
+        self.user_profile = Profile
         self.payload_structure = {
                                   'recipient': {
                                                 'id': self.recipient_id
@@ -33,7 +34,6 @@ class Message(object):
                                   'sender_action': '',
                                   'notification_type': ''
                                 }
-        self.user_profile = BotProfile()
 
     def send_action(self, action):
         """
@@ -188,10 +188,11 @@ class PostBackMessages(Template):
     def __init__(self, recipient_id, **kwargs):
         super(PostBackMessages, self).__init__(recipient_id, **kwargs)
         self.recipient_id = recipient_id
-        self.user_details = self.user_profile.get_user_details(recipient_id)
+        # self.user_details = self.user_profile.get_user_details(recipient_id)
 
     def handle_get_started(self):
         message_text = MessageConfig.GET_STARTED_MESSAGE
+        print(message_text)
         # message_text = message_text.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
