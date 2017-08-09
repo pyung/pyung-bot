@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Application configuration."""
 import os
+import random
 
 
 class Config:
@@ -21,8 +22,6 @@ class FBConfig:
     GRAPH_API_URL = 'https://graph.facebook.com/{0}/me/messages?access_token={1}'.format(
         GRAPH_API_VERSION, FACEBOOK_SECRET_KEY)
     WHITE_LISTED_DOMAINS = [
-        "https://wallpaperbrowse.com/media/images/pictures-14.jpg",
-        "http://norman-bot.herokuapp.com/static/landing/images/norman-android.png"
     ]
     MESSENGER_VERIFICATION_TOKEN = "this_is_unit09"
 
@@ -32,7 +31,7 @@ class ProdConfig:
 
     ENV = 'prod'
     DEBUG = False
-    BASE_URL = 'htpps://norman-bot.herokuapp.com/'
+    BASE_URL = 'unit9-moodbot.herokuapp.com/'
 
 
 class DevConfig:
@@ -46,20 +45,48 @@ class TestConfig:
 
     TESTING = True
     DEBUG = True
+    BASE_URL = "htpps://localhost:5000/"
 
 
 class MessageConfig:
-
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."
 
+    HAPPINESS_MESSAGE_TEMPLATE = ["Awesome. Looks like you're happy.",
+                                  "I like it when you're happy. It makes me happy too."
+                                  "A happy message from you. I like that."
+                                  "So, what's making you happy?",
+                                  "You sound happy today. Mind sharing the good news?",
+                                  "When you're happy and I'm happy, the whole world would be a very happy place."
+                                  ]
+    SADNESS_MESSAGE_TEMPLATE = ["Why are you sad?",
+                                "Cheer me. It's no fun being sad.",
+                                "I have some remedies for curing sadness.",
+                                "Would you like to talk about why you're sad?",
+                                "I detect sadness. Does it have anything to do with me?",
+                                ]
+
+    ANGER_MESSAGE_TEMPLATE = ["Why are you angry buddy?",
+                              "I detect anger. Did I say something wrong.",
+                              "I eat when am angry. Would you like some food to eat?",
+                              "Huh. Someone's angry.",
+                              "Do you want to talk about why you're angry?"]
+
+    DISGUST_MESSAGE_TEMPLATE = ["Disgust, huh. That's new.",
+                                "What's disgusting?",
+                                "I detect disgust. What's that?"]
+
+    FEAR_MESSAGE_TEMPLATE = ["I can sense fear. What are you afraid of?",
+                             "I fear the dark myself so it's perfectly fine to be scared.",
+                             "I used to be scared once.",
+                             "You've gotta learn to overcome your fear."]
+
     @classmethod
-    def get_message_by_mood(cls, current_mood):
-        message_dict = "You are moody."
-        print(message_dict)
-        return message_dict
-        # return [message for mood, message in message_dict.items() if current_mood == mood]
+    def get_message_by_template(cls, template_name):
+        template_name = cls.__dict__.get(template_name)
+        random_response = random.choice(template_name)
+        return random_response
 
 
 class IBMWatsonConFIG():

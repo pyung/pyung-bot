@@ -28,9 +28,13 @@ class ResponseHandler(Message, Profile):
         print(message_text)
         return self.send_message("text", message_text=message_text)
 
+
+    #@Todo: I know I could have handled all of the functions below in the handle_normal_response method but I felt I
+    #it'd be better in the long run if each function ever needs to fork out and do more than just return the static text
+    #from the config
+
     def handle_happiness_response(self):
         message_text = MessageConfig.BAD_WORD_TEMPLATE
-        print(message_text)
         return self.send_message("text", message_text=message_text)
 
     def handle_sadness_response(self):
@@ -42,6 +46,10 @@ class ResponseHandler(Message, Profile):
         return self.send_message("text", message_text=message_text)
 
     def handle_disgust_response(self):
+        message_text = MessageConfig.BAD_WORD_TEMPLATE
+        return self.send_message("text", message_text=message_text)
+
+    def handle_fear_response(self):
         message_text = MessageConfig.BAD_WORD_TEMPLATE
         return self.send_message("text", message_text=message_text)
 
