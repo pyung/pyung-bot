@@ -177,7 +177,6 @@ class Template(Message):
         else:
             self.payload_structure['message'].pop('quick_replies')
         self.payload_structure['message'].pop('text')
-        print(self.payload_structure)
         request = base.exec_request('POST', graphAPIURL, data=self.payload_structure)
         if request:
             return request
