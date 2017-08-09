@@ -96,6 +96,8 @@ class MessageConfig:
                                 "Going into the Food Cerebro... B-)",
                                 "Believe me, I'm a foodie, not an engineer... B-)"]
 
+    UNABLE_TO_GET_MOOD_NEW = "You currently have no mood set."
+
     @classmethod
     def get_message_by_template(cls, template_name):
         template_name = cls.__dict__.get(template_name)

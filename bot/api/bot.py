@@ -54,8 +54,6 @@ class WebHook(Resource):
                     return response.response_ok('Success')
                 if message['type'] == 'text':
                     message = decode_data(message.get('data'))
-                    if message == "mood":
-                        return ResponseHandler(recipient_id).handle_last_mood()
                     Processor(message, recipient_id).process()
             return response.response_ok('success')
         return response.response_ok('success')

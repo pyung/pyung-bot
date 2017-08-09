@@ -54,6 +54,7 @@ def bad_word_filter(sentence):
 
 def ongoing_conversation(recipient_id):
     if os.path.exists(recipient_id + '.yaml'):
+        print('Yes, it exists')
         return True
     return False
 
@@ -74,7 +75,7 @@ def read_conversational_log(filename):
 
 def write_conversational_log(filename, current_mood):
     data = {'current_mood': current_mood}
-    filename +='.yaml'
+    filename += '.yaml'
     with io.open(filename, 'w', encoding='utf8') as stream:
         yaml.dump(data, stream, default_flow_style=False, explicit_start=True)
 

@@ -17,13 +17,15 @@ class Processor:
         if isinstance(self.sentence, str):
             if bad_word_filter(self.sentence):
                 return ResponseHandler(self.recipient_id).bad_word_response()
-
+        current_mood = parse_sentence(self.sentence)
         if ongoing_conversation(self.recipient_id):
-            current_mood = parse_sentence(self.sentence)
+            if self.sentence == "mood":
+                return ResponseHandler(self.recipient_id).handle_last_mood()
             fill_slot(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood)
         else:
-            current_mood = parse_sentence(self.sentence)
+            if self.sentence == "mood":
+                return ResponseHandler(self.recipient_id).handle_no_mood_response(new=True)
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
