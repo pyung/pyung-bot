@@ -1,6 +1,6 @@
 from bot.messenger.utils import bad_word_filter, ongoing_conversation, fill_slot, parse_sentence,create_conversational_log
 from bot.core.response import ResponseHandler
-from bot.core.mood import Happiness, Sadness, Anger, Disgust, Fear
+from bot.core.mood import Happiness, Sadness, Anger, Disgust, Fear, Moods
 
 
 class Processor:
@@ -35,7 +35,6 @@ class Processor:
         :param last_mood:
         :return:
         """
-        print(current_mood)
         if current_mood == 'joy':
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'disgust':
@@ -44,6 +43,8 @@ class Processor:
             return Anger(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'fear':
             return Fear(current_mood, last_mood, self.recipient_id).get_response()
-        return Sadness(current_mood, last_mood, self.recipient_id).get_response()
+        elif current_mood == 'sadness':
+            return Sadness(current_mood, last_mood, self.recipient_id).get_response()
+        return Moods(current_mood, last_mood, self.recipient_id).get_response()
 
 

@@ -1,4 +1,5 @@
 from bot.core.response import ResponseHandler
+from bot.messenger.send_api import PostBackMessages
 from bot.models import UserModel
 
 
@@ -20,9 +21,7 @@ class Moods(ResponseHandler):
         self.user = UserModel.get_user_by_facebook_id(self.recipient_id)
 
     def get_response(self):
-        if self.user:
-            return self.handle_normal_response()
-        return self.handle_normal_response()
+        return self.handle_no_mood_response()
 
 
         ##I decided to go ahead and use OOP to handle this instead of having to handle it all in the get_response class
@@ -35,7 +34,8 @@ class Happiness(Moods):
         super(Happiness, self).__init__(recipient_id, current_mood, last_mood)
 
     def get_response(self):
-        return self.handle_happiness_response()
+        postbackmessages = PostBackMessages(self.recipient_id)
+        return postbackmessages.handle_get_started()
 
 
 class Sadness(Moods):

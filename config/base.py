@@ -83,6 +83,19 @@ class MessageConfig:
                              "I used to be scared once.",
                              "You've gotta learn to overcome your fear."]
 
+    NO_MOOD_MESSAGE_TEMPLATE = ["*scratch my head* :(", "How do I respond to that... :O",
+                                "I can be not-so-smart from time to time... :(",
+                                "Err... you know I'm not human, right? :O", "I do not understand you.",
+                                "Sorry I've got a little bit sick. BRB in 2 min :(",
+                                "Oops... 404 My Witty Mind Not Found :O",
+                                "Oops... My brain went MIA in the cloud, BRB in 2 :(",
+                                "Hmm... How should I respond to that... :O"
+                                ]
+
+    RESPONSE_SEARCH_TEMPLATE = ["Sure, give me a few seconds... B-)", "Scanning the world... :D", "Zoom zoom zoom...",
+                                "Going into the Food Cerebro... B-)",
+                                "Believe me, I'm a foodie, not an engineer... B-)"]
+
     @classmethod
     def get_message_by_template(cls, template_name):
         template_name = cls.__dict__.get(template_name)
