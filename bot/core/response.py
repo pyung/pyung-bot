@@ -29,8 +29,8 @@ class ResponseHandler(Message, Profile):
     def handle_happiness_response(self):
         message_text = MessageConfig.get_message_by_template('HAPPINESS_MESSAGE_TEMPLATE')
         print(message_text)
-        return self.send_message("text", message_text=message_text)
-
+        return self.bad_word_response()
+    
     def handle_sadness_response(self):
         message_text = MessageConfig.get_message_by_template('SADNESS_MESSAGE_TEMPLATE')
         print(message_text)
