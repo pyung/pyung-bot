@@ -30,7 +30,7 @@ class Processor:
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
-    def launch_mood_service(self, current_mood, last_mood=None):
+    def launch_mood_service(self, current_mood):
         """
         There's a service launcher so i can extend to support other things
         :param current_mood:
@@ -38,17 +38,15 @@ class Processor:
         :param last_mood:
         :return:
         """
-        print('Current Mood in Launch Mood is', current_mood)
-        return ResponseHandler(self.recipient_id).bad_word_response()
         if current_mood == 'joy':
-            return Happiness(current_mood, last_mood, self.recipient_id).get_response()
+            return ResponseHandler(self.recipient_id).handle_happiness_response()
         elif current_mood == 'disgust':
-            return Disgust(current_mood, last_mood, self.recipient_id).get_response()
+            return ResponseHandler(self.recipient_id).handle_happiness_response()
         elif current_mood == 'anger':
-            return Anger(current_mood, last_mood, self.recipient_id).get_response()
+            return ResponseHandler(self.recipient_id).handle_happiness_response()
         elif current_mood == 'fear':
-            return Fear(current_mood, last_mood, self.recipient_id).get_response()
+            return ResponseHandler(self.recipient_id).handle_happiness_response()
         elif current_mood == 'sadness':
-            return Sadness(current_mood, last_mood, self.recipient_id).get_response()
-
+            return ResponseHandler(self.recipient_id).handle_happiness_response()
+        return ResponseHandler(self.recipient_id).handle_no_mood_response()
 
