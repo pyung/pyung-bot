@@ -3,7 +3,7 @@ from flask import json
 
 from config.errors import HttpMethodError
 from config.http_handler import base
-from bot.messenger.user_profile import Profile
+from bot.messenger.user_profile import Profile as BotProfile
 from config.base import FBConfig, MessageConfig
 from config.utils import response
 
@@ -33,7 +33,7 @@ class Message(object):
                                   'sender_action': '',
                                   'notification_type': ''
                                 }
-        self.user_profile = Profile()
+        self.user_profile = BotProfile()
 
     def send_action(self, action):
         """
@@ -188,7 +188,6 @@ class PostBackMessages(Template):
     def __init__(self, recipient_id, **kwargs):
         super(PostBackMessages, self).__init__(recipient_id, **kwargs)
         self.recipient_id = recipient_id
-        self.temp_user = None
         self.user_details = self.user_profile.get_user_details(recipient_id)
 
     def handle_get_started(self):

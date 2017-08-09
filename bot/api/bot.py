@@ -44,6 +44,7 @@ class WebHook(Resource):
         data = request.get_data()
         request_type = get_request_type(data)
         print(request_type)
+        return response.response_ok(200)
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
                 print(postback_payload)
