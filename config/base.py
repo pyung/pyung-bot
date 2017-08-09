@@ -55,8 +55,8 @@ class MessageConfig:
                         "from using such words."
 
     HAPPINESS_MESSAGE_TEMPLATE = ["Awesome. Looks like you're happy.",
-                                  "I like it when you're happy. It makes me happy too."
-                                  "A happy message from you. I like that."
+                                  "I like it when you're happy. It makes me happy too.",
+                                  "A happy message from you. I like that.",
                                   "So, what's making you happy?",
                                   "You sound happy today. Mind sharing the good news?",
                                   "When you're happy and I'm happy, the whole world would be a very happy place."

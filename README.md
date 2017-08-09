@@ -11,7 +11,19 @@ Features
 - Procfile for deploying to a PaaS (e.g. Heroku)
 - pytest and Factory-Boy for testing (example tests included)
 - Flask's Click CLI configured with simple commands
+- Mood Detection using IBM_WATSON API
 - Utilizes best practices: `Blueprints <http://flask.pocoo.org/docs/blueprints/>`_ and `Application Factory <http://flask.pocoo.org/docs/patterns/appfactories/>`_ patterns
+
+Screenshots
+-----------
+
+![alt text](https://bytebucket.org/OlamilekanResearch/unit-9-bot-release-1.0/raw/50c37072372b5954b243fb86ac3b5c9f48500c50/screenshots/Screenshot_20170809-164653.png?token=9fbaaaed47b233cd1dc6524689205aff7f85d30f)
+
+![alt text](https://bytebucket.org/OlamilekanResearch/unit-9-bot-release-1.0/raw/50c37072372b5954b243fb86ac3b5c9f48500c50/screenshots/Screenshot_20170809-164506.png?token=a2eb9ac7adf318d57da2aa798a33ebb353664fd7 )
+
+![alt text](https://bytebucket.org/OlamilekanResearch/unit-9-bot-release-1.0/raw/50c37072372b5954b243fb86ac3b5c9f48500c50/screenshots/Screenshot_20170809-164519.png?token=b60d508b544ed86b4ad20527389176a9679dc86f)
+
+![alt text](https://bytebucket.org/OlamilekanResearch/unit-9-bot-release-1.0/raw/50c37072372b5954b243fb86ac3b5c9f48500c50/screenshots/Screenshot_20170809-164531.png?token=060719f8bfcacfdff4d8cb686e460f3fcd9d2c2d)
 
 
 # How it works:
@@ -29,12 +41,6 @@ Features
 |CI             | Codeship
 | Hosting       |  Heroku       |
 
-Screenshots
------------
-
-.. image:: https://dl.dropboxusercontent.com/u/1693233/github/cookiecutter-flask-01.png
-    :target: https://dl.dropboxusercontent.com/u/1693233/github/cookiecutter-flask-01.png
-    :alt: Home page
 
 
 ##### Bot Details

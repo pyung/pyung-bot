@@ -1,0 +1,1 @@
+Open the tests folder and run each of the tests.
