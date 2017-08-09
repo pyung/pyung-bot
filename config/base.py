@@ -49,6 +49,7 @@ class TestConfig:
 
 
 class MessageConfig:
+    GET_STARTED_MESSAGE = "Hello <username>, My name is MoodBot. I am a mood bot."
     BAD_WORD_TEMPLATE = "Hello <username>, Unfortunately your last message contains words" \
                         " I find offensive. Please, desist " \
                         "from using such words."

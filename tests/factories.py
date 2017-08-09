@@ -4,7 +4,6 @@ import datetime
 
 from factory import LazyFunction, Sequence
 from factory.mongoengine import MongoEngineFactory
-from config.extensions import db, session
 from bot.models import UserModel
 
 
@@ -21,7 +20,6 @@ class UserFactory(BaseFactory):
     """User factory."""
 
     username = Sequence(lambda n: 'user{0}'.format(n))
-    email = Sequence(lambda n: 'user{0}@example.com'.format(n))
     facebook_id = Sequence(lambda n: '{0}'.format(n))
     last_seen = LazyFunction(datetime.datetime.now)
     created_at = LazyFunction(datetime.datetime.now)

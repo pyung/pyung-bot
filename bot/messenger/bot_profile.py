@@ -144,12 +144,3 @@ class TargetAudience(ProfileAPI):
     """
     pass
 
-
-if __name__ == '__main__':
-    test = GetStarted()
-    # message = {'first_time_user': 'true', 'message': 'Hello World', 'action': 'get started'}
-    # payload = {'get_started': {'payload': message}}
-    # final_payload = json.dumps(payload)
-    # print(final_payload)
-    # test.set_message(final_payload)
-    print(test.get_message())
