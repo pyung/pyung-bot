@@ -30,7 +30,7 @@ class Processor:
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
-    def launch_mood_service(self, current_mood):
+    def launch_mood_service(self, current_mood, last_mood=None):
         """
         There's a service launcher so i can extend to support other things
         :param current_mood:
