@@ -188,12 +188,11 @@ class PostBackMessages(Template):
     def __init__(self, recipient_id, **kwargs):
         super(PostBackMessages, self).__init__(recipient_id, **kwargs)
         self.recipient_id = recipient_id
-        # self.user_details = self.user_profile.get_user_details(recipient_id)
+        self.user_details = self.user_profile.get_user_details(recipient_id)
 
     def handle_get_started(self):
         message_text = MessageConfig.GET_STARTED_MESSAGE
-        print(message_text)
-        # message_text = message_text.replace('<username>', self.user_details['first_name'])
+        message_text = message_text.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
 

@@ -1,10 +1,8 @@
 from flask import Blueprint
-from flask import make_response
 from flask import request
 from flask_restful import Resource
 
 from bot.core.processor import Processor
-from bot.core.response import ResponseHandler
 from bot.messenger.payload_conversation import PayloadConversationHandler
 from config.extensions import csrf_protect
 from config.utils import response, decode_data
@@ -45,12 +43,8 @@ class WebHook(Resource):
         request_type = get_request_type(data)
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
-                print(postback_payload)
-                if referral_load:
                     payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
                     return payloadhandler.handle_get_started(postback_payload)
-                payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-                return payloadhandler.handle_get_started(postback_payload)
             return response.response_ok('success')
 
         elif request_type == "message":
@@ -61,5 +55,4 @@ class WebHook(Resource):
                     message = decode_data(message.get('data'))
                     Processor(message, recipient_id).process()
             return response.response_ok('success')
-        else:
-            return response.response_ok('success')
+        return response.response_ok('success')
