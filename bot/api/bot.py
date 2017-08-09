@@ -50,9 +50,9 @@ class WebHook(Resource):
                 print(postback_payload)
                 if referral_load:
                     payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-                    return payloadhandler.handle_conversation(postback_payload)
+                    return payloadhandler.handle_get_started(postback_payload)
                 payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-                return payloadhandler.handle_conversation(postback_payload)
+                return payloadhandler.handle_get_started(postback_payload)
             return response.response_ok('success')
 
         elif request_type == "message":

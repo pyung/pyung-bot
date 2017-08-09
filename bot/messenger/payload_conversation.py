@@ -5,7 +5,7 @@ class PayloadConversationHandler:
     def __init__(self, **kwargs):
         self.recipient_id = kwargs.get('recipient_id')
 
-    def handle_conversation(self, postback_payload):
+    def handle_get_started(self, postback_payload):
         postbackmessages = PostBackMessages(self.recipient_id)
-        if postback_payload == 'MOODBOT_GET_STARTED_PAYLOAD':
+        if postback_payload == 'GET_STARTED_PAYLOAD':
             return postbackmessages.handle_get_started()
