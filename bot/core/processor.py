@@ -41,12 +41,12 @@ class Processor:
         if current_mood == 'joy':
             return ResponseHandler(self.recipient_id).handle_happiness_response()
         elif current_mood == 'disgust':
-            return ResponseHandler(self.recipient_id).handle_happiness_response()
+            return ResponseHandler(self.recipient_id).handle_disgust_response()
         elif current_mood == 'anger':
-            return ResponseHandler(self.recipient_id).handle_happiness_response()
+            return ResponseHandler(self.recipient_id).handle_anger_response()
         elif current_mood == 'fear':
-            return ResponseHandler(self.recipient_id).handle_happiness_response()
+            return ResponseHandler(self.recipient_id).handle_fear_response()
         elif current_mood == 'sadness':
-            return ResponseHandler(self.recipient_id).handle_happiness_response()
+            return ResponseHandler(self.recipient_id).handle_sadness_response()
         return ResponseHandler(self.recipient_id).handle_no_mood_response()
 
