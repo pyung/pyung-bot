@@ -55,7 +55,6 @@ class GetStarted(ProfileAPI):
     def set_message(self, payload):
         request = base.exec_request('POST', self.graphAPIURL, data=payload)
         if request:
-            print(request)
             return True
         else:
             raise HttpMethodError('Unable to complete request.')
@@ -87,7 +86,7 @@ class GreetingText(ProfileAPI):
     def set_text(self, payload):
         request = base.exec_request('POST', self.graphAPIURL, data=payload)
         if request:
-            print(request)
+            return True
         else:
             raise HttpMethodError('Unable to complete request.')
 
@@ -113,7 +112,7 @@ class WhitelistDomain(ProfileAPI):
     def set_text(self, payload):
         request = base.exec_request('POST', self.graphAPIURL, data=payload)
         if request:
-            print(request)
+            return True
         else:
             raise HttpMethodError('Unable to complete request.')
 

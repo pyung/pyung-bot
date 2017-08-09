@@ -20,13 +20,10 @@ class Processor:
 
         if ongoing_conversation(self.recipient_id):
             last_mood = fill_slot(self.recipient_id)
-            print('The last mood is', last_mood)
             current_mood = parse_sentence(self.sentence)
-            print('The current mood is ', current_mood)
             return self.launch_mood_service(current_mood, last_mood)
         else:
             current_mood = parse_sentence(self.sentence)
-            print('The current mood is', current_mood)
             create_conversational_log(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 

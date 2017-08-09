@@ -21,7 +21,6 @@ class Moods(ResponseHandler):
         self.user = UserModel.get_user_by_facebook_id(self.recipient_id)
 
     def get_response(self):
-        print('I got in here.')
         return self.handle_no_mood_response()
 
 

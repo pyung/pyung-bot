@@ -86,9 +86,6 @@ def parse_sentence(sentence):
 
 def get_request_type(payload):
     data = json.loads(payload)
-    # print(data["entry"][0]["messaging"])
-    # print(data["entry"][0]["messaging"][0])
-
     """
         b'{"object":"page","entry":[{"id":"1151771338259557","time":1493254959665,"messaging":[{"recipient":{"id":"1151771338259557"},"timestamp":1493254959665,"sender":{"id":"1280106375410348"},"postback":{"payload":"NORMAN_GET_STARTED_PAYLOAD"}}]}]}'
 
