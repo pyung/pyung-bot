@@ -72,11 +72,15 @@ def read_conversational_log(filename):
         return data_loaded
 
 
-def fill_slot(recipient_id):
-    template = read_conversational_log(recipient_id)
-    current_mood = template["current_mood"]
+def write_conversational_log(filename, current_mood):
+    data = {'current_mood': current_mood}
+    filename +='.yaml'
+    with io.open(filename, 'w', encoding='utf8') as stream:
+        yaml.dump(data, stream, default_flow_style=False, explicit_start=True)
 
-    return current_mood
+
+def fill_slot(recipient_id, current_mood):
+    return write_conversational_log(recipient_id, current_mood)
 
 
 def parse_sentence(sentence):

@@ -3,6 +3,7 @@ from flask import request
 from flask_restful import Resource
 
 from bot.core.processor import Processor
+from bot.core.response import ResponseHandler
 from bot.messenger.payload_conversation import PayloadConversationHandler
 from config.extensions import csrf_protect
 from config.utils import response, decode_data
@@ -54,7 +55,7 @@ class WebHook(Resource):
                 if message['type'] == 'text':
                     message = decode_data(message.get('data'))
                     if message == "mood":
-                        return ResponseHandler(self.recipient_id).handle_last_mood()
+                        return ResponseHandler(recipient_id).handle_last_mood()
                     Processor(message, recipient_id).process()
             return response.response_ok('success')
         return response.response_ok('success')
