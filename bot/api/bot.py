@@ -44,11 +44,15 @@ class WebHook(Resource):
     def post(self):
         data = request.get_data()
         request_type = get_request_type(data)
+        print(request_type)
         if request_type == 'postback':
             for recipient_id, postback_payload, referral_load in postback_events(data):
+                print(postback_payload)
                 if referral_load:
                     payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
                     return payloadhandler.handle_conversation(postback_payload)
+                payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
+                return payloadhandler.handle_conversation(postback_payload)
             return response.response_ok('success')
 
         elif request_type == "message":

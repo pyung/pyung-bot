@@ -56,6 +56,7 @@ class GetStarted(ProfileAPI):
         request = base.exec_request('POST', self.graphAPIURL, data=payload)
         if request:
             print(request)
+            return True
         else:
             raise HttpMethodError('Unable to complete request.')
 
