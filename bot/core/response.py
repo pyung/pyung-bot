@@ -1,3 +1,4 @@
+from bot.messenger import utils
 from bot.messenger.send_api import Message
 from bot.messenger.user_profile import Profile
 from config.base import MessageConfig
@@ -19,6 +20,11 @@ class ResponseHandler(Message, Profile):
     # @Todo: I know I could have handled all of the functions below in the handle_normal_response method but I felt I
     #  @Todo: it'd be better in the long run if each function ever needs to fork out and do more than just return the
     #  static text @Todo:  from the config
+
+    def handle_last_mood(self):
+        mood = utils.read_conversational_log(self.recipient_id)["current_mood"]
+        print(mood)
+        return self.send_message("text", message_text=mood)
 
     def handle_no_mood_response(self):
         message_text = MessageConfig.get_message_by_template('NO_MOOD_MESSAGE_TEMPLATE')
