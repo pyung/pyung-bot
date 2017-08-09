@@ -34,9 +34,8 @@ class WebHook(Resource):
         args = request.args
         hub_mode = args.get('hub.mode')
         verification_token = args.get('hub.verify_token')
-        hub_challenge = args.get('hub.challenge').strip("\n\"")
+        hub_challenge = args.get('hub.challenge')
         if hub_mode == 'subscribe' and verification_token == FBConfig.MESSENGER_VERIFICATION_TOKEN:
-            print('IO got here.')
             return response.response_ok(hub_challenge)
         else:
             return response.response_error('Failed validation. Make sure the validation tokens match', args)

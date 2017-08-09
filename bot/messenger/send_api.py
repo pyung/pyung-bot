@@ -193,7 +193,7 @@ class PostBackMessages(Template):
 
     def handle_get_started(self):
         message_text = MessageConfig.GET_STARTED_MESSAGE
-        message_text = message_text.replace('<username>', self.user_details['first_name'])
+        # message_text = message_text.replace('<username>', self.user_details['first_name'])
         return self.send_message("text", message_text=message_text)
 
 
