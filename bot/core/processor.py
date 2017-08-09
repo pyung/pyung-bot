@@ -39,7 +39,7 @@ class Processor:
         :return:
         """
         print('Current Mood in Launch Mood is', current_mood)
-        return
+        return Moods(current_mood, last_mood, self.recipient_id).get_response()
         if current_mood == 'joy':
             return Happiness(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'disgust':
@@ -50,6 +50,5 @@ class Processor:
             return Fear(current_mood, last_mood, self.recipient_id).get_response()
         elif current_mood == 'sadness':
             return Sadness(current_mood, last_mood, self.recipient_id).get_response()
-        return Moods(current_mood, last_mood, self.recipient_id).get_response()
 
 
