@@ -62,7 +62,6 @@ def ongoing_conversation(recipient_id):
 
 
 def update_user_mood(recipient_id, current_mood):
-    print('THe user facebook detail is')
     print(UserModel(recipient_id).get_user_by_facebook_id())
     return UserModel(recipient_id).update_mood(current_mood)
 

@@ -20,11 +20,13 @@ class Processor:
         current_mood = parse_sentence(self.sentence)
         print(current_mood)
         if ongoing_conversation(self.recipient_id):
+            print('On Going')
             if self.sentence == "mood":
                 return ResponseHandler(self.recipient_id).handle_last_mood()
             update_user_mood(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood)
         else:
+            print('New')
             if self.sentence == "mood":
                 return ResponseHandler(self.recipient_id).handle_no_mood_response(new=True)
             update_user_mood(self.recipient_id, current_mood)

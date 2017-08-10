@@ -32,4 +32,5 @@ class UserModel:
         return user.mood
 
     def update_mood(self, last_mood):
+        print('I am updating mood:', last_mood)
         db.update_one({"facebook_id": self.facebook_id}, {"$set": {"last_mood": last_mood}})
