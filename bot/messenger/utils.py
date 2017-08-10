@@ -61,14 +61,8 @@ def ongoing_conversation(recipient_id):
     return False
 
 
-def save_user_mood(filename, current_mood):
-    filename += '.yaml'
-    with io.open(filename, 'r') as stream:
-        data_loaded = yaml.load(stream)
-        return data_loaded
-
-
 def update_user_mood(recipient_id, current_mood):
+    print(UserModel(recipient_id).update_mood(current_mood))
     return UserModel(recipient_id).update_mood(current_mood)
 
 

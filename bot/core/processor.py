@@ -1,4 +1,4 @@
-from bot.messenger.utils import bad_word_filter, ongoing_conversation, update_user_mood, parse_sentence, save_user_mood
+from bot.messenger.utils import bad_word_filter, ongoing_conversation, update_user_mood, parse_sentence
 from bot.core.response import ResponseHandler
 
 
@@ -12,11 +12,13 @@ class Processor:
         self.recipient_id = recipient_id
 
     def process(self):
+        print(self.sentence)
 
         if isinstance(self.sentence, str):
             if bad_word_filter(self.sentence):
                 return ResponseHandler(self.recipient_id).bad_word_response()
         current_mood = parse_sentence(self.sentence)
+        print(current_mood)
         if ongoing_conversation(self.recipient_id):
             if self.sentence == "mood":
                 return ResponseHandler(self.recipient_id).handle_last_mood()
@@ -25,7 +27,7 @@ class Processor:
         else:
             if self.sentence == "mood":
                 return ResponseHandler(self.recipient_id).handle_no_mood_response(new=True)
-            save_user_mood(self.recipient_id, current_mood)
+            update_user_mood(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood, last_mood=None)
 
     def launch_mood_service(self, current_mood, last_mood=None):

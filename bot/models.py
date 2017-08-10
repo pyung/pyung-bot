@@ -3,7 +3,7 @@ from config.extensions import db
 
 class UserModel:
     def __init__(self, facebook_id, **kwargs):
-        self.username = kwargs.get('username')
+        self.facebook_details = kwargs.get('facebook_details')
         self.facebook_id = facebook_id
         self.last_seen = kwargs.get('last_seen')
         self.created_on = kwargs.get('created_on')
@@ -11,7 +11,7 @@ class UserModel:
         self.bio = kwargs.get('bio')
 
     def create_user(self):
-        user = db.insert_one({'username': self.username,
+        user = db.insert_one({'username': self.facebook_details,
                               'facebook_id': self.facebook_id,
                               'last_seen': self.last_seen,
                               'created_on': self.created_on,

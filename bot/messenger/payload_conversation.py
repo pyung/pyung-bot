@@ -16,6 +16,6 @@ class PayloadConversationHandler:
             created_on = json.dumps(datetime.datetime.now(), default=json_serial)
             last_seen = json.dumps(datetime.datetime.now(), default=json_serial)
             UserModel(facebook_id=self.recipient_id, created_on=created_on,
-                      last_seen=last_seen, username=Profile.get_user_details(self.recipient_id))\
+                      last_seen=last_seen, facebook_details=Profile.get_user_details(self.recipient_id))\
                 .create_user()
             return postbackmessages.handle_get_started()
