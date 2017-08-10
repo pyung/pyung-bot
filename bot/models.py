@@ -21,7 +21,9 @@ class UserModel:
         return False
 
     def get_user_by_facebook_id(self):
+        print('Getting user with the id', self.facebook_id)
         user = db.find_one({'facebook_id': self.facebook_id})
+        print(user)
         return user
 
     def get_last_mood(self):
