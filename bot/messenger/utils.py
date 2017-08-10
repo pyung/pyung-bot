@@ -55,14 +55,12 @@ def bad_word_filter(sentence):
 
 def ongoing_conversation(recipient_id):
     user = UserModel(recipient_id).get_user_by_facebook_id()
-    print(user)
     if user:
         return True
     return False
 
 
 def update_user_mood(recipient_id, current_mood):
-    print(UserModel(recipient_id).get_user_by_facebook_id())
     return UserModel(recipient_id).update_mood(current_mood)
 
 
