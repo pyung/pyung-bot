@@ -27,6 +27,7 @@ class ResponseHandler(Message, Profile):
         return self.send_message("text", message_text=mood)
 
     def handle_no_mood_response(self, new=False):
+        print(new)
         message_text = MessageConfig.get_message_by_template('UNABLE_TO_GET_MOOD_NEW') if new else \
             MessageConfig.get_message_by_template('NO_MOOD_MESSAGE_TEMPLATE')
         print(message_text)
