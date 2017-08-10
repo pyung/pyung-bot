@@ -2,14 +2,10 @@
 """Helper utilities and decorators."""
 import hashlib
 import json
-import os
-import random
-import string
-import uuid
 from threading import Thread
-from time import time
-from flask import current_app, url_for, flash,jsonify, make_response, redirect
+from flask import jsonify, make_response
 from functools import wraps
+from datetime import date, datetime
 
 
 from config.http_handler import base
@@ -51,6 +47,15 @@ def hash_data(data):
 
 def generate_conversation_session(data):
     return hash_data(data)[:32]
+
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, (datetime, date)):
+        serial = obj.isoformat()
+        return serial
+    raise TypeError("Type %s not serializable" % type(obj))
 
 
 class Response:
