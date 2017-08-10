@@ -22,7 +22,7 @@ class ResponseHandler(Message, Profile):
     #  static text @Todo:  from the config
 
     def handle_last_mood(self):
-        mood = UserModel.get_last_mood(self.recipient_id)
+        mood = UserModel(self.recipient_id).get_last_mood()
         print('I fot to print last mood', mood)
         return self.send_message("text", message_text=mood)
 
