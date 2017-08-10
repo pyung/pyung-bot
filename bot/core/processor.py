@@ -16,16 +16,15 @@ class Processor:
             if bad_word_filter(self.sentence):
                 return ResponseHandler(self.recipient_id).bad_word_response()
         current_mood = parse_sentence(self.sentence)
-        print(self.sentence, 'in Yes')
         if ongoing_conversation(self.recipient_id):
-            print('On Going')
+            print('The sentence is {}, the current mood is {} and the last_mood is'.format(self.sentence, current_mood))
             if self.sentence == "mood":
                 print('The message is mood in ongoing')
                 return ResponseHandler(self.recipient_id).handle_last_mood()
             update_user_mood(self.recipient_id, current_mood)
             return self.launch_mood_service(current_mood)
         else:
-            print(self.sentence)
+            print('The sentence is {}, the current mood is {}'.format(self.sentence, current_mood))
             if self.sentence == "mood":
                 print('The message is mood in new')
                 return ResponseHandler(self.recipient_id).handle_no_mood_response(new=True)
