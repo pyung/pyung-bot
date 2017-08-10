@@ -21,7 +21,6 @@ class UserModel:
         return False
 
     def get_user_by_facebook_id(self):
-        print('Getting user with the id', self.facebook_id)
         user = db.find_one({'facebook_id': self.facebook_id})
         print(user)
         return user
@@ -32,5 +31,4 @@ class UserModel:
         return user.mood
 
     def update_mood(self, last_mood):
-        print('I am updating mood:', last_mood)
         db.update_one({"facebook_id": self.facebook_id}, {"$set": {"last_mood": last_mood}})
