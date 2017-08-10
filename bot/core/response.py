@@ -23,7 +23,7 @@ class ResponseHandler(Message, Profile):
 
     def handle_last_mood(self):
         mood = UserModel.get_last_mood(self.recipient_id)
-        print(mood)
+        print('I fot to print last mood', mood)
         return self.send_message("text", message_text=mood)
 
     def handle_no_mood_response(self, new=False):
