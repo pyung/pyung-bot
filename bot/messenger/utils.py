@@ -6,6 +6,7 @@ import yaml
 
 from bot.api.ibm_watson import Agent
 from config.utils import generate_conversation_session
+from bot.models import UserModel
 
 BAD_WORDS = {'4r5e','5h1t','5hit','a55','anal','anus','ar5e','arrse','arse','ass','ass-fucker','asses'
                             ,'assfucker','assfukka','asshole','assholes','asswhole','a_s_s','b!tch','b00bs',
@@ -53,35 +54,22 @@ def bad_word_filter(sentence):
 
 
 def ongoing_conversation(recipient_id):
-    if os.path.exists(recipient_id + '.yaml'):
-        print('Yes, it exists')
+    user = UserModel(recipient_id).get_user_by_facebook_id()
+    print(user)
+    if user:
         return True
     return False
 
 
-def create_conversational_log(filename, current_mood):
-    data = {'current_mood': current_mood}
-    filename += '.yaml'
-    with io.open(filename, 'w', encoding='utf8') as outfile:
-        yaml.dump(data, outfile, default_flow_style=False, explicit_start=True)
-
-
-def read_conversational_log(filename):
+def save_user_mood(filename, current_mood):
     filename += '.yaml'
     with io.open(filename, 'r') as stream:
         data_loaded = yaml.load(stream)
         return data_loaded
 
 
-def write_conversational_log(filename, current_mood):
-    data = {'current_mood': current_mood}
-    filename += '.yaml'
-    with io.open(filename, 'w', encoding='utf8') as stream:
-        yaml.dump(data, stream, default_flow_style=False, explicit_start=True)
-
-
-def fill_slot(recipient_id, current_mood):
-    return write_conversational_log(recipient_id, current_mood)
+def update_user_mood(recipient_id, current_mood):
+    return UserModel(recipient_id).update_mood(current_mood)
 
 
 def parse_sentence(sentence):

@@ -1,7 +1,7 @@
-from bot.messenger import utils
 from bot.messenger.send_api import Message
 from bot.messenger.user_profile import Profile
 from config.base import MessageConfig
+from bot.models import UserModel
 
 
 class ResponseHandler(Message, Profile):
@@ -22,7 +22,7 @@ class ResponseHandler(Message, Profile):
     #  static text @Todo:  from the config
 
     def handle_last_mood(self):
-        mood = utils.read_conversational_log(self.recipient_id)["current_mood"]
+        mood = UserModel.get_last_mood(self.recipient_id)
         print(mood)
         return self.send_message("text", message_text=mood)
 
