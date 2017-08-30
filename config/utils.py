@@ -10,7 +10,6 @@ from datetime import date, datetime
 
 from config.http_handler import base
 from config.errors import HttpMethodError
-from config.base import FBConfig
 
 
 def async_task(f):
@@ -24,21 +23,6 @@ def async_task(f):
 
 def decode_data(data):
     return data.decode("utf-8")
-
-
-def update_white_listed_domains():
-    """https://graph.facebook.com/v2.6/me/messenger_profile?access_token=PAGE_ACCESS_TOKEN"""
-    graph_api_url = FBConfig.GRAPH_API_URL.replace('messages', 'messenger_profile')
-    data = {
-        "setting_type": "domain_whitelisting",
-        "whitelisted_domains": FBConfig.WHITE_LISTED_DOMAINS,
-        "domain_action_type": "add"
-            }
-    try:
-        request = base.exec_request('POST', graph_api_url, data=data)
-        return request
-    except HttpMethodError:
-        return 'Error'
 
 
 def hash_data(data):
@@ -56,6 +40,13 @@ def json_serial(obj):
         serial = obj.isoformat()
         return serial
     raise TypeError("Type %s not serializable" % type(obj))
+
+
+def bad_word_filter(sentence):
+    sentence_tokens = sentence.lower().split(" ")
+    if BAD_WORDS.intersection(set(sentence_tokens)):
+        return True
+    return False
 
 
 class Response:
