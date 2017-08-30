@@ -10,10 +10,10 @@ from config.utils import response, decode_data
 from config.base import FBConfig
 from bot.slack.utils import get_request_type, postback_events, messaging_events
 
-blueprint = Blueprint('api', __name__, url_prefix='/webhook')
+blueprint = Blueprint('api', __name__, url_prefix='/api')
 
 
-@blueprint.route('', methods=['GET', 'POST'])
+@blueprint.route('/webhook/activate-event', methods=['GET', 'POST'])
 @csrf_protect.exempt
 def webhook():
     view_class = WebHook()
@@ -32,23 +32,23 @@ class WebHook(Resource):
         pass
 
     def post(self):
-        print("I got to post")
         data = request.get_json()
         print(data)
-        return jsonify({'r': data})
-        request_type = get_request_type(data)
-        if request_type == 'postback':
-            for recipient_id, postback_payload, referral_load in postback_events(data):
-                    payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-                    return payloadhandler.handle_get_started(postback_payload)
-            return response.response_ok('success')
-
-        elif request_type == "message":
-            for recipient_id, message in messaging_events(data):
-                if not message:
-                    return response.response_ok('Success')
-                if message['type'] == 'text':
-                    message = decode_data(message.get('data'))
-                    Processor(message, recipient_id).process()
-            return response.response_ok('success')
-        return response.response_ok('success')
+        print(data.get('challenge'))
+        return response.response_ok(data.get('challenge'))
+        # request_type = get_request_type(data)
+        # if request_type == 'postback':
+        #     for recipient_id, postback_payload, referral_load in postback_events(data):
+        #             payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
+        #             return payloadhandler.handle_get_started(postback_payload)
+        #     return response.response_ok('success')
+        #
+        # elif request_type == "message":
+        #     for recipient_id, message in messaging_events(data):
+        #         if not message:
+        #             return response.response_ok('Success')
+        #         if message['type'] == 'text':
+        #             message = decode_data(message.get('data'))
+        #             Processor(message, recipient_id).process()
+        #     return response.response_ok('success')
+        # return response.response_ok('success')
