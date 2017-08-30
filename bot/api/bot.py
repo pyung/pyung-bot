@@ -6,6 +6,7 @@ from bot.core.processor import Processor
 from bot.core.response import ResponseHandler
 from config.extensions import csrf_protect
 from config.utils import response, decode_data
+from bot.slack import funcs
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
@@ -29,9 +30,9 @@ class WebHook(Resource):
         pass
 
     def post(self):
-        data = request.get_json()
-        return response.response_ok(data.get('challenge'))
-        # request_type = get_request_type(data)
+        payload = request.get_json()
+        print(payload)
+        event_type = funcs.get_event_type(payload)
         # if request_type == 'postback':
         #     for recipient_id, postback_payload, referral_load in postback_events(data):
         #             payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
