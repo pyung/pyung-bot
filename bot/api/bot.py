@@ -4,11 +4,8 @@ from flask_restful import Resource
 
 from bot.core.processor import Processor
 from bot.core.response import ResponseHandler
-from bot.slack.payload_conversation import PayloadConversationHandler
 from config.extensions import csrf_protect
 from config.utils import response, decode_data
-from config.base import FBConfig
-from bot.slack.utils import get_request_type, postback_events, messaging_events
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
