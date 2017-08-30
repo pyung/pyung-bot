@@ -10,7 +10,7 @@ from config.utils import response, decode_data
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
 
-@blueprint.route('/webhook/activate-event', methods=['GET', 'POST'])
+@blueprint.route('/webhook', methods=['GET', 'POST'])
 @csrf_protect.exempt
 def webhook():
     view_class = WebHook()
@@ -30,8 +30,6 @@ class WebHook(Resource):
 
     def post(self):
         data = request.get_json()
-        print(data)
-        print(data.get('challenge'))
         return response.response_ok(data.get('challenge'))
         # request_type = get_request_type(data)
         # if request_type == 'postback':

@@ -11,8 +11,6 @@ Proposed Tasks
 
 Features
 --------
-
-- Easy database integration with TinyMongo
 - Flask-WTForms integration for csrf_excemption
 - Procfile for deploying to a PaaS (e.g. Heroku)
 - pytest and Factory-Boy for testing (example tests included)
@@ -21,7 +19,3 @@ Features
 - Utilizes best practices: `Blueprints <http://flask.pocoo.org/docs/blueprints/>`_ and `Application Factory <http://flask.pocoo.org/docs/patterns/appfactories/>`_ patterns
 
 
-
-
-
- 
