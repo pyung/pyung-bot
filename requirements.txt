@@ -5,7 +5,6 @@ WebTest==2.0.25
 factory-boy==2.8.1
 
 flask-restful
-# Everything needed in production
 
 # Flask
 Flask==0.12
@@ -14,16 +13,9 @@ flask_mongoengine
 Werkzeug==0.11.15
 click>=5.0
 
-#Database
-tinydb
 
 # Deployment
 gunicorn>=19.1.1
 
-#Facebook
-pymessenger
-
 pyyaml
 
-tinymongo
-watson_developer_cloud

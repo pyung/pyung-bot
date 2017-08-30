@@ -1,4 +1,4 @@
-from bot.slack.utils import bad_word_filter, ongoing_conversation, update_user_mood, parse_sentence
+from config.utils import bad_word_filter
 from bot.core.response import ResponseHandler
 
 
