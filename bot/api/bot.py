@@ -2,13 +2,16 @@ from flask import Blueprint, jsonify
 from flask import request
 from flask_restful import Resource
 
-from bot.core.processor import Processor
-from bot.core.response import ResponseHandler
 from config.extensions import csrf_protect
-from config.utils import response, decode_data
-from bot.slack import funcs
+from bot.slack.funcs import get_event_details, get_event_type
+from bot.api.logic import LogicHandler
+from config.utils import response
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
+
+from slackclient import SlackClient
+
+sc = SlackClient("6C9EzTEnseSYA4HnVcJ8XAiI")
 
 
 @blueprint.route('/webhook', methods=['GET', 'POST'])
@@ -32,13 +35,19 @@ class WebHook(Resource):
     def post(self):
         payload = request.get_json()
         print(payload)
-        event_type = funcs.get_event_type(payload)
-        return response.response_ok(event_type)
-        # if request_type == 'postback':
-        #     for recipient_id, postback_payload, referral_load in postback_events(data):
-        #             payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-        #             return payloadhandler.handle_get_started(postback_payload)
-        #     return response.response_ok('success')
+        event_type = get_event_type(payload)
+        print(event_type)
+        for sender, payload in get_event_details(event_type, payload):
+            if event_type == 'message':
+                sc.api_call(
+                    "im.open",
+                    user=sender,
+                    text="Hello from Python! :tada:"
+                )
+            return response.response_ok('success')
+        return response.response_ok('success')
+
+
         #
         # elif request_type == "message":
         #     for recipient_id, message in messaging_events(data):
