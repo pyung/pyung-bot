@@ -33,6 +33,7 @@ class WebHook(Resource):
         payload = request.get_json()
         print(payload)
         event_type = funcs.get_event_type(payload)
+        return response.response_ok(event_type)
         # if request_type == 'postback':
         #     for recipient_id, postback_payload, referral_load in postback_events(data):
         #             payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
