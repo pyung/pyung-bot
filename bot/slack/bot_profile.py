@@ -16,14 +16,14 @@ class PersitentMenu(ProfileAPI):
     """
     Setting, Getting and Deleting Persistent Menu.
     Make sure you read and understand this very well for sending the data :
-    https://developers.facebook.com/docs/messenger-platform/messenger-profile/persistent-menu
+    https://developers.facebook.com/docs/slack-platform/slack-profile/persistent-menu
     """
     def __init__(self):
         super().__init__('persistent_menu')
 
     def set_menu(self, menu_data):
         """
-        https://developers.facebook.com/docs/messenger-platform/messenger-profile/persistent-menu has a detailed documentation
+        https://developers.facebook.com/docs/slack-platform/slack-profile/persistent-menu has a detailed documentation
         on the menu data and formats.
         :param menu_data:
         :return:
@@ -47,7 +47,7 @@ class GetStarted(ProfileAPI):
     """
     Setting, Getting and Deleting Persistent Menu.
     Make sure you read and understand this very well for sending the data:
-    https://developers.facebook.com/docs/messenger-platform/messenger-profile/get-started-button
+    https://developers.facebook.com/docs/slack-platform/slack-profile/get-started-button
     """
     def __init__(self):
         super().__init__('get_started')
@@ -78,7 +78,7 @@ class GreetingText(ProfileAPI):
     """
     Setting, Getting and Deleting Get Greeting Text.
     Make sure you read and understand this very well for sending the data :
-    https://developers.facebook.com/docs/messenger-platform/messenger-profile/greeting-text
+    https://developers.facebook.com/docs/slack-platform/slack-profile/greeting-text
     """
     def __init__(self):
         super().__init__('greeting')

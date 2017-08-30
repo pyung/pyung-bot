@@ -1,8 +1,8 @@
 import json
-from bot.messenger.send_api import PostBackMessages
+from bot.slack.send_api import PostBackMessages
 import datetime
 from bot.models import UserModel
-from bot.messenger.user_profile import Profile
+from bot.slack.user_profile import Profile
 from config.utils import json_serial
 
 

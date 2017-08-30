@@ -1,5 +1,5 @@
 from bot.core.response import ResponseHandler
-from bot.messenger.send_api import PostBackMessages
+from bot.slack.send_api import PostBackMessages
 from bot.models import UserModel
 
 

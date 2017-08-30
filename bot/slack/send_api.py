@@ -3,7 +3,7 @@ from flask import json
 
 from config.errors import HttpMethodError
 from config.http_handler import base
-from bot.messenger.user_profile import Profile
+from bot.slack.user_profile import Profile
 from config.base import FBConfig, MessageConfig
 from config.utils import response
 
