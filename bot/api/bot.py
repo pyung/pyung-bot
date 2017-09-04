@@ -9,9 +9,9 @@ from config.utils import response
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
 
-from slackclient import SlackClient
+from slacker import Slacker
 
-sc = SlackClient("6C9EzTEnseSYA4HnVcJ8XAiI")
+from slackclient import SlackClient
 
 
 @blueprint.route('/webhook', methods=['GET', 'POST'])
@@ -19,6 +19,7 @@ sc = SlackClient("6C9EzTEnseSYA4HnVcJ8XAiI")
 def webhook():
     view_class = WebHook()
     if request.method == "GET":
+        print("Fuck")
         return view_class.get()
     else:
         return view_class.post()
@@ -30,31 +31,14 @@ class WebHook(Resource):
         self.response = None
 
     def get(self):
-        pass
+        return response.response_error("Method Not Implemented")
 
     def post(self):
         payload = request.get_json()
-        print(payload)
         event_type = get_event_type(payload)
-        print(event_type)
-        for sender, payload in get_event_details(event_type, payload):
-            if event_type == 'message':
-                sc.api_call(
-                    "im.open",
-                    user=sender,
-                    text="Hello from Python! :tada:"
-                )
-            return response.response_ok('success')
+        if event_type == 'message':
+            text, sender = get_event_details(event_type, payload)
+            print("#bot-test")
+            slack_client = SlackClient("wpDK0ba0GTDQ0lMK8SvglqyK")
+            print(slack_client.api_call("api.test"))
         return response.response_ok('success')
-
-
-        #
-        # elif request_type == "message":
-        #     for recipient_id, message in messaging_events(data):
-        #         if not message:
-        #             return response.response_ok('Success')
-        #         if message['type'] == 'text':
-        #             message = decode_data(message.get('data'))
-        #             Processor(message, recipient_id).process()
-        #     return response.response_ok('success')
-        # return response.response_ok('success')
