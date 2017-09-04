@@ -7,11 +7,6 @@ from flask import jsonify, make_response
 from functools import wraps
 from datetime import date, datetime
 
-
-from config.http_handler import base
-from config.errors import HttpMethodError
-
-
 def async_task(f):
     """ Takes a function and runs it in a thread """
     @wraps(f)
@@ -47,6 +42,7 @@ def bad_word_filter(sentence):
     if BAD_WORDS.intersection(set(sentence_tokens)):
         return True
     return False
+
 
 
 class Response:

@@ -2,12 +2,16 @@ from flask import Blueprint, jsonify
 from flask import request
 from flask_restful import Resource
 
-from bot.core.processor import Processor
-from bot.core.response import ResponseHandler
 from config.extensions import csrf_protect
-from config.utils import response, decode_data
+from bot.slack.funcs import get_event_details, get_event_type
+from bot.api.logic import LogicHandler
+from config.utils import response
 
 blueprint = Blueprint('api', __name__, url_prefix='/api')
+
+from slacker import Slacker
+
+from slackclient import SlackClient
 
 
 @blueprint.route('/webhook', methods=['GET', 'POST'])
@@ -15,6 +19,7 @@ blueprint = Blueprint('api', __name__, url_prefix='/api')
 def webhook():
     view_class = WebHook()
     if request.method == "GET":
+        print("Fuck")
         return view_class.get()
     else:
         return view_class.post()
@@ -26,24 +31,14 @@ class WebHook(Resource):
         self.response = None
 
     def get(self):
-        pass
+        return response.response_error("Method Not Implemented")
 
     def post(self):
-        data = request.get_json()
-        return response.response_ok(data.get('challenge'))
-        # request_type = get_request_type(data)
-        # if request_type == 'postback':
-        #     for recipient_id, postback_payload, referral_load in postback_events(data):
-        #             payloadhandler = PayloadConversationHandler(recipient_id=recipient_id)
-        #             return payloadhandler.handle_get_started(postback_payload)
-        #     return response.response_ok('success')
-        #
-        # elif request_type == "message":
-        #     for recipient_id, message in messaging_events(data):
-        #         if not message:
-        #             return response.response_ok('Success')
-        #         if message['type'] == 'text':
-        #             message = decode_data(message.get('data'))
-        #             Processor(message, recipient_id).process()
-        #     return response.response_ok('success')
-        # return response.response_ok('success')
+        payload = request.get_json()
+        event_type = get_event_type(payload)
+        if event_type == 'message':
+            text, sender = get_event_details(event_type, payload)
+            print("#bot-test")
+            slack_client = SlackClient("wpDK0ba0GTDQ0lMK8SvglqyK")
+            print(slack_client.api_call("api.test"))
+        return response.response_ok('success')

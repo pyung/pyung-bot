@@ -1,0 +1,2 @@
+POST https://slack.com/api/auth.test?token=wpDK0ba0GTDQ0lMK8SvglqyK HTTP/1.1
+content-type: application/json

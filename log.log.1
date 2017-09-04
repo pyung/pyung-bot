@@ -1,0 +1,144 @@
+2017-08-30 13:56:32,297 - app - ERROR - Exception on /api/webhook [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+2017-08-30 13:56:34,531 - app - ERROR - Exception on /api/webhook [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+2017-08-30 13:57:01,384 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
+2017-08-30 13:57:08,450 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
+2017-08-30 13:57:41,222 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
+2017-08-30 13:57:42,058 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
+2017-08-30 13:57:54,135 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
+2017-08-30 13:58:55,843 - app - ERROR - Exception on /api/webhook [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.5/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.5/dist-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 24, in webhook
+    return view_class.post()
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/api/bot.py", line 38, in post
+    event_type = get_event_type(payload)
+  File "/home/lekanterragon/Desktop/pyungprojects/pyungbot/bot/slack/funcs.py", line 2, in get_event_type
+    event = payload.get('event').get('type')
+AttributeError: 'NoneType' object has no attribute 'get'
