@@ -10,7 +10,7 @@ flask-restful
 Flask==0.12
 flask_wtf
 flask_mongoengine
-Werkzeug==0.11.15
+Werkzeug==0.15.5
 click>=5.0
 
 
